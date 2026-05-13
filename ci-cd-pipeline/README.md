@@ -5,7 +5,7 @@ This assignment sets up a **CI/CD foundation** for the CS 6620 coursework reposi
 ## Project Layout
 
 ```
-hw1-cicd/
+ci-cd-pipeline/
 ├── src/
 │   ├── __init__.py
 │   ├── mathutil.py      # factorial, fibonacci, is_prime, gcd
@@ -27,7 +27,7 @@ hw1-cicd/
 ```bash
 # 1. Clone the repository (if you haven't already)
 git clone git@github.khoury.northeastern.edu:fuhengzhang/cs6620-coursework.git
-cd cs6620-coursework/assignments/hw1-cicd
+cd cs6620-coursework/ci-cd-pipeline
 
 # 2. (Recommended) Create and activate a virtual environment
 python -m venv .venv
@@ -54,7 +54,7 @@ print(is_palindrome("A man, a plan, a canal: Panama"))  # True
 
 ## Running the Tests
 
-From the `assignments/hw1-cicd/` directory:
+From the `ci-cd-pipeline/` directory:
 
 ```bash
 # Run all tests with verbose output
@@ -83,8 +83,8 @@ The GitHub Actions workflow (`.github/workflows/ci.yml`) triggers on:
 
 | Trigger | Condition |
 |---|---|
-| `push` | Any change inside `assignments/hw1-cicd/` |
-| `pull_request` | Any change inside `assignments/hw1-cicd/` |
+| `push` | Any change inside `ci-cd-pipeline/` |
+| `pull_request` | Any change inside `ci-cd-pipeline/` |
 | `workflow_dispatch` | Manual run from the Actions tab |
 
 **Steps executed by the workflow:**

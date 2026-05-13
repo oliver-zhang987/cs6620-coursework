@@ -7,16 +7,15 @@ This repository contains all assignments and projects for **CS 6620 – Software
 ```
 cs6620-coursework/
 ├── .github/workflows/   # CI/CD workflow definitions
-├── assignments/
-│   └── hw1-cicd/        # HW 1 – CI/CD Pipeline
-│       ├── src/         # Source code
-│       ├── tests/       # Unit tests
-│       └── requirements.txt
+├── ci-cd-pipeline/      # CI/CD Pipeline (HW 1)
+│   ├── src/             # Source code
+│   ├── tests/           # Unit tests
+│   └── requirements.txt
 ├── .gitignore
 └── README.md            # ← you are here
 ```
 
-Each assignment lives in its own directory under `assignments/`. Refer to the README inside each assignment folder for setup and usage instructions specific to that assignment.
+Each assignment lives in its own directory at the repo root. Refer to the README inside each folder for setup and usage instructions.
 
 ## CI / CD
 

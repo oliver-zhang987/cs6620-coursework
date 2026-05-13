@@ -12,10 +12,10 @@ name: CI
 on:
   push:
     paths:
-      - "assignments/hw1-cicd/**"
+      - "ci-cd-pipeline/**"
   pull_request:
     paths:
-      - "assignments/hw1-cicd/**"
+      - "ci-cd-pipeline/**"
   workflow_dispatch:          # allow manual / ad-hoc runs
 
 jobs:
@@ -27,7 +27,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: assignments/hw1-cicd
+        working-directory: ci-cd-pipeline
 
     steps:
       # ── 1. Check out the repository ─────────────────────────────────
