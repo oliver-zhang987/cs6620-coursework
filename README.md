@@ -1,26 +1,15 @@
-# CS 6620 – Coursework Repository
+# CS 6620 Coursework
 
-This repository contains all assignments and projects for **CS 6620 – Software Engineering Processes** at Northeastern University.
+Repo for CS 6620 assignments. Each assignment has its own folder.
 
-## Repository Structure
+## Structure
 
 ```
-cs6620-coursework/
-├── .github/workflows/   # CI/CD workflow definitions
-├── ci-cd-pipeline/      # CI/CD Pipeline (HW 1)
-│   ├── src/             # Source code
-│   ├── tests/           # Unit tests
-│   └── requirements.txt
-├── .gitignore
-└── README.md            # ← you are here
+├── ci-cd-pipeline/    # HW1 - CI/CD pipeline setup
+├── .github/workflows/ # GitHub Actions workflows
+└── .gitignore
 ```
 
-Each assignment lives in its own directory at the repo root. Refer to the README inside each folder for setup and usage instructions.
+## CI/CD
 
-## CI / CD
-
-A GitHub Actions workflow (`.github/workflows/ci.yml`) runs automatically on every push or pull request that touches assignment code. It can also be triggered manually via the **Actions** tab ("Run workflow").
-
-## Author
-
-Fuheng Zhang – Northeastern University
+GitHub Actions workflow runs automatically when code changes are pushed. Can also be triggered manually from the Actions tab.

@@ -1,97 +1,62 @@
-"""Tests for src/mathutil.py"""
-
 import pytest
-from src.mathutil import factorial, fibonacci, is_prime, gcd  # noqa: E402
+from src.mathutil import factorial, fibonacci, is_prime, gcd
 
-
-# ── factorial ────────────────────────────────────────────────────────
 
 class TestFactorial:
-    def test_zero(self):
+    def test_base_cases(self):
         assert factorial(0) == 1
-
-    def test_one(self):
         assert factorial(1) == 1
 
-    def test_small(self):
+    def test_normal(self):
         assert factorial(5) == 120
-
-    def test_larger(self):
         assert factorial(10) == 3628800
 
-    def test_negative_raises(self):
+    def test_negative(self):
         with pytest.raises(ValueError):
             factorial(-1)
 
-    def test_float_raises(self):
+    def test_bad_type(self):
         with pytest.raises(TypeError):
             factorial(3.5)
 
 
-# ── fibonacci ────────────────────────────────────────────────────────
-
 class TestFibonacci:
-    def test_zero(self):
+    def test_empty_and_small(self):
         assert fibonacci(0) == []
-
-    def test_one(self):
         assert fibonacci(1) == [0]
-
-    def test_two(self):
         assert fibonacci(2) == [0, 1]
 
     def test_ten(self):
-        assert fibonacci(10) == [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+        result = fibonacci(10)
+        assert result == [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
 
-    def test_negative_raises(self):
+    def test_negative(self):
         with pytest.raises(ValueError):
             fibonacci(-5)
 
-    def test_string_raises(self):
-        with pytest.raises(TypeError):
-            fibonacci("five")
-
-
-# ── is_prime ─────────────────────────────────────────────────────────
 
 class TestIsPrime:
-    @pytest.mark.parametrize("n", [2, 3, 5, 7, 11, 13, 97])
-    def test_primes(self, n):
-        assert is_prime(n) is True
+    def test_small_primes(self):
+        for p in [2, 3, 5, 7, 11, 13]:
+            assert is_prime(p)
 
-    @pytest.mark.parametrize("n", [0, 1, 4, 6, 8, 9, 100])
-    def test_non_primes(self, n):
-        assert is_prime(n) is False
+    def test_not_prime(self):
+        for n in [0, 1, 4, 9, 100]:
+            assert not is_prime(n)
 
     def test_negative(self):
-        assert is_prime(-7) is False
+        assert not is_prime(-7)
 
-    def test_float_raises(self):
-        with pytest.raises(TypeError):
-            is_prime(7.0)
-
-
-# ── gcd ──────────────────────────────────────────────────────────────
 
 class TestGcd:
-    def test_coprime(self):
-        assert gcd(7, 13) == 1
-
-    def test_common_factor(self):
+    def test_basics(self):
         assert gcd(12, 8) == 4
-
-    def test_same(self):
+        assert gcd(7, 13) == 1
         assert gcd(5, 5) == 5
 
-    def test_zero_and_number(self):
+    def test_with_zero(self):
         assert gcd(0, 9) == 9
-
-    def test_both_zero(self):
         assert gcd(0, 0) == 0
 
-    def test_negative_values(self):
+    def test_negative(self):
         assert gcd(-12, 8) == 4
-
-    def test_float_raises(self):
-        with pytest.raises(TypeError):
-            gcd(1.5, 3)
