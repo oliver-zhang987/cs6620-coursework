@@ -1,0 +1,60 @@
+# ──────────────────────────────────────────────────────────────────────
+# CI Workflow – CS 6620 Coursework
+#
+# Triggers:
+#   • On every push or pull request that touches files inside
+#     assignments/hw1-cicd/
+#   • Manually via workflow_dispatch (ad-hoc runs)
+# ──────────────────────────────────────────────────────────────────────
+
+name: CI
+
+on:
+  push:
+    paths:
+      - "ci-cd-pipeline/**"
+  pull_request:
+    paths:
+      - "ci-cd-pipeline/**"
+  workflow_dispatch:          # allow manual / ad-hoc runs
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+
+    defaults:
+      run:
+        working-directory: ci-cd-pipeline
+
+    steps:
+      # ── 1. Check out the repository ─────────────────────────────────
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # ── 2. Set up Python ────────────────────────────────────────────
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      # ── 3. Install dependencies ─────────────────────────────────────
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # ── 4. Lint with flake8 ─────────────────────────────────────────
+      - name: Lint with flake8
+        run: |
+          # Stop the build on syntax errors or undefined names
+          flake8 src/ tests/ --count --select=E9,F63,F7,F82 --show-source --statistics
+          # Warnings as non-blocking informational output
+          flake8 src/ tests/ --count --exit-zero --max-line-length=120 --statistics
+
+      # ── 5. Run tests ────────────────────────────────────────────────
+      - name: Run tests with pytest
+        run: |
+          pytest tests/ -v
