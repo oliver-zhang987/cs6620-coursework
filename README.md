@@ -6,6 +6,7 @@ Repo for CS 6620 assignments. Each assignment has its own folder.
 
 ```
 ├── ci-cd-pipeline/    # HW1 - CI/CD pipeline setup
+├── dockerized-api/    # HW2 - Dockerized REST API & Slack integration
 ├── .github/workflows/ # GitHub Actions workflows
 └── .gitignore
 ```
