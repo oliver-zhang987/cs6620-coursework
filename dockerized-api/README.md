@@ -68,3 +68,4 @@ To configure this:
 2. In your GitHub repository settings, add a Repository Secret:
    - Name: `SLACK_WEBHOOK_URL`
    - Value: `<Your Slack Webhook URL>`
+
