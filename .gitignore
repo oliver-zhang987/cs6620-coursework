@@ -28,5 +28,9 @@ htmlcov/
 .coverage
 coverage.xml
 
+# LocalStack
+.localstack/
+volume_data/
+
 # Misc
 *.log
