@@ -13,7 +13,7 @@
 
 services:
   localstack:
-    image: localstack/localstack
+    image: localstack/localstack:3.0
     environment:
       - SERVICES=dynamodb,s3
     volumes:
