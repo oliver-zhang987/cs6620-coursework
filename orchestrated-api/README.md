@@ -99,3 +99,7 @@ GitHub Actions workflow at `.github/workflows/orchestrated-api.yml`.
 Test results are sent to a Slack channel. To configure:
 1. Set up an Incoming Webhook in your Slack workspace.
 2. Add a repository secret named `SLACK_WEBHOOK_URL` with the webhook URL.
+
+Here is an example of a successful build notification:
+
+![Slack notification](slack-notification.png)
